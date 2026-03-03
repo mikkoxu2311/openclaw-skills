@@ -1,0 +1,8 @@
+{
+  "vault_path": "/path/to/your/obsidian/vault",
+  "journal_dir": "journal",
+  "archive_dir": "journal",
+  "day_interrupt_times": ["10:00", "15:00"],
+  "morning_time": "08:00",
+  "first_run": false
+}
