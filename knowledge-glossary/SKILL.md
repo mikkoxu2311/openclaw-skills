@@ -1,15 +1,15 @@
 ---
 name: knowledge-glossary
-description: Create a project-specific knowledge glossary from messy notes, strategy docs, meeting transcripts, product discussions, or founder language. Use when the user wants to turn ambiguous project language into a reusable concept map, align team vocabulary, clarify strategic terms, distinguish commonly confused concepts, or give future AI agents durable domain context before writing strategy, product, research, or fundraising materials.
+description: Create a project-specific knowledge glossary or DDD-style ubiquitous language from messy notes, strategy docs, meeting transcripts, product discussions, founder language, or domain expert conversations. Use when the user wants to turn ambiguous language into a reusable concept map, choose canonical terms, identify aliases to avoid, align team vocabulary, clarify strategic/product/domain terms, distinguish commonly confused concepts, or give future AI agents durable context before writing strategy, product, research, technical, or fundraising materials.
 ---
 
 # Knowledge Glossary
 
 ## Purpose
 
-Turn scattered project language into a durable concept system that future humans and AI agents can reuse. The output is not a generic dictionary; it is a project-specific map of terms, definitions, aliases, confusions, relationships, ambiguities, and analogies.
+Turn scattered project or domain language into a durable concept system that future humans and AI agents can reuse. The output is not a generic dictionary; it is a project-specific map of canonical terms, definitions, aliases to avoid, confusions, relationships, ambiguities, and analogies.
 
-Use this skill to help a team agree on what its own words mean before producing strategy docs, pitch decks, PRDs, research reports, positioning, or other high-context artifacts.
+Use this skill to help a team agree on what its own words mean before producing strategy docs, pitch decks, PRDs, research reports, positioning, technical designs, or other high-context artifacts.
 
 ## Core Workflow
 
@@ -23,14 +23,15 @@ Use this skill to help a team agree on what its own words mean before producing 
    - Include terms that the team repeats, argues about, uses inconsistently, or treats as obvious.
    - Exclude ordinary nouns unless they carry a project-specific meaning.
 
-3. **Classify term importance**
-   - `🟢` Core: must be understood by anyone working on the project.
-   - `🟡` Supporting: important for interpreting the project, but not the main positioning.
-   - `🔴` Complex or high-leverage: nuanced, strategic, cross-domain, or often misunderstood.
+3. **Choose canonical language**
+   - When multiple words refer to the same concept, pick the clearest term.
+   - List weaker synonyms, overloaded labels, or deprecated phrases as aliases to avoid.
+   - Be opinionated when the source material supports a clear choice; mark uncertain choices as "needs validation".
 
 4. **Define terms in project context**
    - Write definitions as "what this means in this project," not as encyclopedia entries.
-   - Include cross-domain aliases when helpful, such as business, technical, academic, or investor-language equivalents.
+   - Keep definitions tight: one sentence when possible.
+   - Define what the concept is, not merely what it does.
    - Capture "confused with" distinctions whenever a wrong interpretation would change decisions.
 
 5. **Map relationships**
@@ -38,8 +39,9 @@ Use this skill to help a team agree on what its own words mean before producing 
    - Focus on causal or strategic relationships, not superficial associations.
    - Prefer concise bullets that future agents can reuse as context.
 
-6. **Flag ambiguities**
+6. **Flag ambiguities and synonyms**
    - Identify terms with multiple meanings inside the team.
+   - Identify different words being used for the same concept.
    - Explain why the ambiguity matters.
    - Suggest the clearest wording to use going forward.
 
@@ -54,7 +56,8 @@ Default to a single Markdown document named or titled `Knowledge Glossary - <Pro
 Use the schema in `references/output-format.md` when the user asks for a full deliverable or when the source material is complex.
 
 For lightweight requests, return only:
-- `Core Terms`
+- `Canonical Terms`
+- `Aliases to Avoid`
 - `Key Confusions`
 - `Relationships`
 - `Recommended Language`
@@ -63,7 +66,9 @@ For lightweight requests, return only:
 
 - Make the glossary decision-useful, not comprehensive for its own sake.
 - Prefer 15-40 high-value terms over a bloated list.
+- Only include terms relevant to domain experts or strategic decisions; skip generic implementation words unless they carry domain meaning.
 - Keep definitions short enough to scan.
+- Group terms into natural clusters such as lifecycle, actor, product layer, market, workflow, or architecture.
 - Use the user's language when it is precise; improve it when it is ambiguous.
 - Mark uncertain definitions as "needs validation" instead of inventing certainty.
 - Avoid exposing private source excerpts unless the user asks for traceability.
@@ -72,6 +77,8 @@ For lightweight requests, return only:
 
 - "Turn these founder notes into a project glossary."
 - "Create a vocabulary map for this pitch deck."
+- "Extract a DDD ubiquitous language from this conversation."
+- "Pick canonical terms and aliases to avoid."
 - "Help future AI agents understand our product strategy."
 - "Clarify which concepts we keep mixing up."
 - "Create a knowledge glossary before rewriting this BP."
@@ -82,6 +89,7 @@ For lightweight requests, return only:
 When updating an existing glossary:
 - Preserve its structure unless the user asks for a redesign.
 - Add new terms in the most relevant section.
+- Merge synonyms under the best canonical term instead of duplicating concepts.
 - Update definitions only when new source material clearly changes meaning.
 - Add a "Last updated" line if the existing file uses one.
 - Call out major changes in a short summary before or after the glossary.

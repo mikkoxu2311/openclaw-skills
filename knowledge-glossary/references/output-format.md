@@ -1,6 +1,6 @@
 # Knowledge Glossary Output Format
 
-Use this structure for a full project glossary. Adapt section names to the project domain.
+Use this structure for a full project glossary or ubiquitous language. Adapt section names to the project domain.
 
 ## Header
 
@@ -18,9 +18,9 @@ Group terms by strategic category. Use this table schema:
 ```markdown
 ## <Category>
 
-| Term | Level | Definition | Cross-domain aliases | Confused with |
-| ---- | ----- | ---------- | -------------------- | ------------- |
-| **Term** | 🟢 | Project-specific definition | Alias 1, Alias 2 | Similar term - concise distinction |
+| Term | Definition | Use instead of / aliases to avoid | Confused with |
+| ---- | ---------- | --------------------------------- | ------------- |
+| **Term** | Project-specific definition | Alias 1, Alias 2 | Similar term - concise distinction |
 ```
 
 Suggested categories:
@@ -34,12 +34,13 @@ Suggested categories:
 
 ## Relationships
 
-Capture concept links as concise bullets:
+Capture concept links as concise bullets. Express cardinality or direction when obvious:
 
 ```markdown
 ## Relationships
 
-- **Concept A** enables **Concept B** because ...
+- A **Customer** can have many **Users**.
+- An **Order** produces one or more **Invoices** after fulfillment.
 - **Concept C** is the user-facing entry point; **Concept D** is the paid delivery layer.
 - **Concept E** should not be confused with **Concept F**: E means ..., F means ...
 ```
@@ -48,7 +49,7 @@ Good relationships are causal, directional, or decision-relevant. Avoid vague li
 
 ## Example Dialogue
 
-Use this section when terminology has caused confusion in team conversations:
+Use this section when terminology has caused confusion in team conversations. Keep it short, practical, and precise:
 
 ```markdown
 ## Example Dialogue
@@ -71,7 +72,7 @@ Keep dialogue short. Its job is to show usage, not dramatize the meeting.
 - **"Old positioning" vs "new positioning"**: Explain which term to use now and which term is deprecated.
 ```
 
-Each ambiguity should include one of:
+Each ambiguity should include a clear recommendation and one of:
 - recommended wording
 - deprecated wording
 - decision needed
@@ -103,11 +104,11 @@ Use analogies sparingly. Prefer analogies that help explain the project to inves
 
 ## Product and Positioning
 
-| Term | Level | Definition | Cross-domain aliases | Confused with |
-| ---- | ----- | ---------- | -------------------- | ------------- |
-| **Trusted Research Context** | 🟢 | The product's core promise: convert scattered research sources into traceable context that an AI agent can use with lower hallucination risk. | Evidence layer, source-grounded context | AI search - search returns links; trusted context organizes evidence for downstream decisions. |
-| **Source Graph** | 🟡 | A structured map of papers, patents, datasets, claims, and citations used to show where an answer came from. | Knowledge graph, citation graph | Folder of sources - a graph captures relationships, not just storage. |
-| **Agent Workflow** | 🔴 | The model-led process that plans steps, calls tools, and produces outputs using the trusted context. | Agent orchestration, task planning | Data preparation - data preparation creates inputs; agent workflow decides what to do with them. |
+| Term | Definition | Use instead of / aliases to avoid | Confused with |
+| ---- | ---------- | --------------------------------- | ------------- |
+| **Trusted Research Context** | The product's core promise: convert scattered research sources into traceable context that an AI agent can use with lower hallucination risk. | Evidence layer, source-grounded context | AI search - search returns links; trusted context organizes evidence for downstream decisions. |
+| **Source Graph** | A structured map of papers, patents, datasets, claims, and citations used to show where an answer came from. | Folder of sources, citation dump | Knowledge graph - a source graph can be simpler and focused on evidence provenance. |
+| **Agent Workflow** | The model-led process that plans steps, calls tools, and produces outputs using the trusted context. | Magic AI flow, automation | Data preparation - data preparation creates inputs; agent workflow decides what to do with them. |
 
 ## Relationships
 
@@ -117,6 +118,6 @@ Use analogies sparingly. Prefer analogies that help explain the project to inves
 
 ## Flagged Ambiguities
 
-- **"Research assistant" vs "research infrastructure"**: The first sounds like an application; the second supports the broader strategy. Use "research infrastructure" for investor-facing copy unless the audience is non-technical.
+- **"Research assistant" vs "research infrastructure"**: The first sounds like an application; the second supports the broader strategy. Use **research infrastructure** for investor-facing copy unless the audience is non-technical; treat "research assistant" as an alias to avoid in strategic docs.
 ```
 
