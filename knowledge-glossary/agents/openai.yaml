@@ -1,0 +1,4 @@
+interface:
+  display_name: "Knowledge Glossary"
+  short_description: "Turn messy project language into a reusable concept map"
+  default_prompt: "Use $knowledge-glossary to create a project-specific glossary from these notes."
